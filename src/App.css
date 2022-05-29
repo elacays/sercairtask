@@ -44,7 +44,29 @@
 
 .card-bg {
   background-color: #ECECEC;
-  border-radius: 20px;
+  border-radius: 15px;
+  max-width: 200px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.detail-card-bg {
+  background-color: #ECECEC;
+  border-radius: 15px;
+  max-width: 500px;
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+.btn {
+  padding: 5px 60px;
+  border-radius: 0;
+  background-color: #089DD3;
+  color: white;
+}
+
+.card-bg p {
+  font-size: 14px;
 }
 
 .image-div {}
