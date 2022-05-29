@@ -32,7 +32,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.card-image {
+  max-width: 150px;
+}
+
+.card-bg {
+  background-color: #ECECEC;
+  border-radius: 20px;
+}
+
+.image-div {}
