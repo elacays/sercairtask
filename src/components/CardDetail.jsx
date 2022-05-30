@@ -1,12 +1,38 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 
 export default function CardDetail(props) {
 
-    if (props.isClicked === true) {
+    const [isClicked, setIsClicked] = useState(false)
+
+    const box = useRef(null);
+
+    useEffect(() => {
+        setIsClicked(props.isClicked)
+    }, [])
+
+    //Divin Dışına tıklanma Kontrolü
+    function useOutsideClicker(ref) {
+        useEffect(() => {
+            function handleOutsideClick(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    //console.log("Divin dışına tıklandı");
+                    props.closeCardDetail()
+                } else {
+                    setIsClicked(props.isClicked)
+                }
+            }
+            document.addEventListener("click", handleOutsideClick);
+            return () => document.removeEventListener("click", handleOutsideClick);
+        }, [ref]);
+    }
+
+    useOutsideClicker(box)
+
+    if (isClicked === true) {
         return <div className="container">
             <div className="row justify-content-center">
-                <div className="col-12 detail-card-bg m-4"  >
+                <div className="col-12 detail-card-bg m-4" ref={box}>
                     <div className="image-div">
                         {<img className="detail-card-image" src={props.card.imageUrl} alt="display image" />}
                     </div>
@@ -23,6 +49,7 @@ export default function CardDetail(props) {
                     </div>
                 </div>
             </div>
+
         </div>
     }
 

@@ -8,10 +8,11 @@ export default function Card() {
     const [isClicked, setIsClicked] = useState(false)
 
     /*
-    deviName
+    deviceName
     imageUrl
     desc
     */
+
     useEffect(() => {
         fetch('https://landingpage.sercair.com/api/V1/device/all')
             .then(res => res.json())
@@ -22,6 +23,10 @@ export default function Card() {
         await setSelectedCard(card)
         setIsClicked(true)
         //console.log(selectedCard)
+    }
+
+    const closeCardDetail = () => {
+        setIsClicked(false)
     }
 
     return <div className="container container-margin">
@@ -45,7 +50,7 @@ export default function Card() {
             })}
 
         </div>
-        {isClicked === true ? <CardDetail card={selectedCard} isClicked={true} /> : ""}
+        {isClicked === true ? <CardDetail card={selectedCard} isClicked={isClicked} closeCardDetail={closeCardDetail} /> : ""}
 
     </div>
 }
