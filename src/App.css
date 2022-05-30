@@ -42,6 +42,12 @@
   max-width: 150px;
 }
 
+.detail-card-image {
+  max-width: 410px;
+  width: 100%;
+}
+
+
 .card-bg {
   background-color: #ECECEC;
   border-radius: 15px;
@@ -51,11 +57,13 @@
 }
 
 .detail-card-bg {
-  background-color: #ECECEC;
+  background-color: rgba(226, 226, 226, 0.9);
+  position: relative;
+  top: -375px;
   border-radius: 15px;
   max-width: 500px;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 45px;
 }
 
 .btn {
@@ -69,4 +77,10 @@
   font-size: 14px;
 }
 
-.image-div {}
+.container-margin {
+  margin-top: 100px;
+}
+
+.detail-content {
+  font-size: 12px;
+}

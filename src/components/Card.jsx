@@ -4,7 +4,8 @@ import CardDetail from "./CardDetail"
 
 export default function Card() {
     const [cardItems, setCardItems] = useState([])
-    const [selectedCard, setSelectedCard] = useState([])
+    const [selectedCard, setSelectedCard] = useState({})
+    const [isClicked, setIsClicked] = useState(false)
 
     /*
     deviName
@@ -17,23 +18,25 @@ export default function Card() {
             .then(res => setCardItems(res.data))
     }, [])
 
-    const cardDetail = (card) => {
-        setSelectedCard(card)
+    const cardDetail = async (card) => {
+        await setSelectedCard(card)
+        setIsClicked(true)
+        //console.log(selectedCard)
     }
-    return <div className="container">
+
+    return <div className="container container-margin">
         <div className="row justify-content-center">
             {cardItems.map(cardItem => {
                 return <div className="col-4 card-bg m-4"  >
-                    <div className="image-div">
-                        <img className="card-image" src={cardItem.imageUrl} alt="display image" style={{
-                        }} />
+                    <div className="image-div" key={cardItem.imageUrl}>
+                        <img className="card-image" src={cardItem.imageUrl} alt="display image" />
                     </div>
                     <div className="text-left">
                         <div >
                             <h5 className="font-weight-bold">Sercair</h5>
                         </div>
-                        <div>
-                            <p key={cardItem.deviceName}>{cardItem.deviceName}</p>
+                        <div key={cardItem.deviceName}>
+                            <p >{cardItem.deviceName}</p>
                         </div>
                     </div>
                     {/* <p key={cardItem.desc}>{cardItem.desc}</p> */}
@@ -42,6 +45,7 @@ export default function Card() {
             })}
 
         </div>
-        {selectedCard !== null ? <CardDetail card={selectedCard} /> : ""}
+        {isClicked === true ? <CardDetail card={selectedCard} isClicked={true} /> : ""}
+
     </div>
 }
