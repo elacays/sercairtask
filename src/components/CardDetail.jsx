@@ -4,11 +4,17 @@ import { useEffect, useRef, useState } from "react"
 export default function CardDetail(props) {
 
     const [isClicked, setIsClicked] = useState(false)
-
     const box = useRef(null);
 
+
+
     useEffect(() => {
+
         setIsClicked(props.isClicked)
+        if (!localStorage.getItem('items')) {
+            localStorage.setItem('items', JSON.stringify(props.card))
+        }
+
     }, [])
 
     //Divin Dışına tıklanma Kontrolü
@@ -28,6 +34,13 @@ export default function CardDetail(props) {
     }
 
     useOutsideClicker(box)
+    let discountDiv;
+    if (localStorage.getItem('tab') === "isClosed") {
+        discountDiv = <div className="discount"><a>%50 İNDİRİM</a></div>
+
+    } else {
+        discountDiv = ""
+    }
 
     if (isClicked === true) {
         return <div className="container">
@@ -47,9 +60,11 @@ export default function CardDetail(props) {
                             <p>{props.card.desc}</p>
                         </div>
                     </div>
+                    <div >
+                        {discountDiv}
+                    </div>
                 </div>
             </div>
-
         </div>
     }
 
