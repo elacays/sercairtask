@@ -1,6 +1,6 @@
-
 import './App.css';
 import Card from './components/Card'
+import * as ReactBootstrap from 'react-bootstrap'
 
 
 function App() {
