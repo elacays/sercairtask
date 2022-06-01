@@ -11,9 +11,10 @@ export default function CardDetail(props) {
     useEffect(() => {
 
         setIsClicked(props.isClicked)
-        if (!localStorage.getItem('items')) {
-            localStorage.setItem('items', JSON.stringify(props.card))
-        }
+        // if (!localStorage.getItem('items')) {
+        //     localStorage.setItem('items', JSON.stringify(props.card))
+        // }
+        localStorage.setItem('items', JSON.stringify(props.card))
 
     }, [])
 
