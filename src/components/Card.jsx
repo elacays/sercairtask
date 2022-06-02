@@ -55,7 +55,10 @@ export default function Card() {
         // Cancel the event
         e.preventDefault();
         if (e) {
-            localStorage.setItem("tab", "isClosed")
+            if (localStorage.getItem('items')) {
+                localStorage.setItem("tab", "isClosed")
+            }
+
         }
     };
     return <div className="container container-margin">
